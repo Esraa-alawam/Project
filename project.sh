@@ -55,7 +55,7 @@ do
   #Loop over all agents to find the closest One 
   tail -n +2 "$AGENTS_FILE" | while IFS=',' read -r AgentID Name City Availability VehicleType CanCarryFragile 
   do
-    coords=$(python3 "$COORDINATE_SCRIPT" "$AgentCity" "$FromCity")
+    coords=$(python3 "$COORDINATE_SCRIPT" "$City" "$FromCity")
 
     if [[ "$coords" == "not found" ]]; then
       continue

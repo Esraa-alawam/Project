@@ -9,7 +9,7 @@ def get_geocode(city):
     else:
         return None, None
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("not found")
         sys.exit()
