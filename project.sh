@@ -68,7 +68,7 @@ do
 
     distance=$(haversine_distance "$agent_lat" "$agent_lng" "$order_lat" "$order_lng")
     
-    echo "looking agent city '$City', From city '$FromCity' => result '$distance'"
+    echo "looking agent city '$City', to order city '$FromCity' => result '$distance'"
     if [[ "$distance" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
 
       comp=$(echo "$distance < $best_distance" | bc)
