@@ -4,6 +4,7 @@ from geopy.geocoders import Nominatim
 
 os.listdir() # List files in current directory 
 
+
 def load_csv(file_name): # mitigate the risk of FileNotFoundError
     if not os.path.exists(file_name):
         raise FileNotFoundError(f"Data file '{file_name}' missing")
@@ -20,17 +21,14 @@ def get_geocode(city): # find the latitude and longitude from the city name
     if location: # if the location is found
         return location.latitude, location.longitude
     else:
-        print(location," not found.")
+        return None, None
         
 def get_coordinates(agent_city,order_city): # get the latitude and longitude
     agent_lat, agent_lng = get_geocode(agent_city)
     order_lat, order_lng = get_geocode(order_city)
     
-    print("agent_lat: ", agent_lat,"\tagent_lng: "
-    ,agent_lng,"\norder_lat: ",order_lat,"\torder_lng: ",order_lng)
-
-agent_city = input("Enter the agent city: ")
-order_city = input("Enter the order city: ")
-
-get_coordinates(agent_city, order_city)
+    if None in (agent_lat, agent_lng, order_city):
+      return "not found"
+      
+    return f"{agent_lat},{agent_lng};{order_lat},{order_lng})"
 
